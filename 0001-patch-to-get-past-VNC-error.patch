@@ -1,0 +1,29 @@
+From e2512a4df0caec3d4e1ae36fd85216b9a3481283 Mon Sep 17 00:00:00 2001
+From: jasonpritchard <jasonpritchard@users.noreply.github.com>
+Date: Sun, 15 Mar 2015 10:26:36 -0700
+Subject: [PATCH 1/1] patch to get past VNC error
+
+---
+ qmp.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/qmp.c b/qmp.c
+index 963305c..ae55f1e 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -134,6 +134,12 @@ VncInfo *qmp_query_vnc(Error **errp)
+     error_set(errp, QERR_FEATURE_DISABLED, "vnc");
+     return NULL;
+ };
++
++VncInfo2List *qmp_query_vnc_servers(Error **errp)
++{
++    error_set(errp, QERR_FEATURE_DISABLED, "vnc");
++    return NULL;
++};
+ #endif
+ 
+ #ifndef CONFIG_SPICE
+-- 
+1.9.5 (Apple Git-50.3)
+
